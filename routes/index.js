@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.get('/ajax', function(req, res, next) {
+router.get('/ajax', function(req, res) {
   res.render('ajax', { quote: "Texto que ira mudar devido ao AJAX" });
 });
 
