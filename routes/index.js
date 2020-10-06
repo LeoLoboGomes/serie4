@@ -18,6 +18,11 @@ router.post('/', function(req, res, next) {
   var fs = require('fs');
   var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
+
+      if (files.filetoupload.size === 0) {
+        res.write('File not selected');
+        res.end();
+      } else {
         var oldpath = files.filetoupload.path;
         var newpath = './public/' + files.filetoupload.name;
         fs.rename(oldpath, newpath, function(err) {
@@ -25,6 +30,7 @@ router.post('/', function(req, res, next) {
             res.write('File uploaded');
             res.end();
         });
+      }
     });
 });
 
