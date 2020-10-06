@@ -1,7 +1,17 @@
 $(document).ready(function(){
-    $("form#changeQuote").on('submit', function(e){
+    $("button").on('click', function(e){
         e.preventDefault();
-        var data = $('input[name=quote]').val();
+
+        $.getJSON("newtext.json", function(result){
+            $.each(result, function(i, field){
+                $("div").empty();
+                $("div").append(field);
+                
+            });
+        });
+
+        //$("div").load("test.txt");
+        /*var data = $('input[name=quote]').val();
         $.ajax({
             type: 'post',
             url: "/ajax",
@@ -10,6 +20,6 @@ $(document).ready(function(){
         })
         .done(function(data){
             $('h1').html(data.quote);
-        });
+        });*/
     });
 });

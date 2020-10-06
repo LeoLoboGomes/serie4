@@ -1,15 +1,14 @@
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 script(src="/change.js")
-h1 !{quote}
+
 form(action="/" method="post" enctype="multipart/form-data" id="upload")
     input(type="file" name="filetoupload")
-    input(type="hidden" name="formInstance" value="form1")
+    input(type="hidden" name="formInstance")
     input(type="submit")
 form(action="/" method="get")
     label(for="form") Formulario:
     input(type="text" id="form" name="form")
     input(type="submit")
-form(action="/" method="post" id="changeQuote")
-    input(type="text" placeholder="Set quote of the day" name='quote')
-    input(type="hidden" name="formInstance" value="form2")
-    input(type="submit")
+button(type="button") Alterar
+div
+    p !{quote}

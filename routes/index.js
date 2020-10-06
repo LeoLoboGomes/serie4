@@ -1,10 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { quote: "Texto que ira mudar devido ao AJAX" });
+  if (!req.query.form) {
+    res.render('index', { quote: "Texto que ira mudar devido ao AJAX" });
+  }
+  else {
+    console.log(req.query.form);
+  }
 });
+
 
 router.post('/', function(req, res, next) {
   var formidable = require('formidable');
@@ -19,14 +26,6 @@ router.post('/', function(req, res, next) {
             res.end();
         });
     });
-});
-
-router.get('/ajax', function(req, res) {
-  res.render('ajax', { quote: "Texto que ira mudar devido ao AJAX" });
-});
-
-router.post('/ajax', function(req, res){
-  res.render('ajax', {quote: req.body.quote});
 });
 
 module.exports = router;
